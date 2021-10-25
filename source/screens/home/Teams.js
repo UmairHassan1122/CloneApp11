@@ -5,6 +5,7 @@ import BuildingIcon from 'react-native-vector-icons/FontAwesome'
 import BellIcon from 'react-native-vector-icons/Feather'
 import TeamsFlat from '../../components/Teams'
 import { FlatGrid } from 'react-native-super-grid';
+import Header from '../../components/Header'
 
 export default class Teams extends Component {
 
@@ -111,56 +112,15 @@ export default class Teams extends Component {
         const { dataBackup, dataSource } = this.state
         return (
             <View style={{ flex: 1, backgroundColor: '#F4F6FA' }}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 10, marginTop: 20 }}>
-                    <View style={{ marginRight: 5 }}>
-                        <TouchableOpacity>
-                            <BuildingIcon name='building' size={30} color='#000' />
-                        </TouchableOpacity>
-                    </View>
-
-                    <View style={{ marginRight: 5 }}>
-                        <TouchableOpacity>
-                            <BellIcon name='bell' size={30} color='#000' />
-                        </TouchableOpacity>
-                    </View>
-
-                    <View>
-                        <TouchableOpacity>
-                            <SettingIcon name='setting' size={30} color='#000' />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={{ marginTop: 20, marginLeft: 10 }}>
-                    <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 25, color: '#000' }}>Teams</Text>
-                </View>
+                
+                <Header title='Teams'/>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginRight: 10 }}>
                     <View style={{ marginLeft: 10, backgroundColor: '#fff', elevation: 3, flex: 1, borderRadius: 5 }}>
                         <TextInput style={{ marginLeft: 10 }} placeholder='Search' onChangeText={(value) => this.filterItem(value)}></TextInput>
                     </View>
-
-                    {/* <View>
-                        <TouchableOpacity style={{ padding: 10, backgroundColor: '#fff', elevation: 3, marginRight: 10, marginLeft: 10, borderRadius: 5 }}>
-                            <SearchIcon name='search1' size={25} color='#000' />
-                        </TouchableOpacity>
-                    </View> */}
                 </View>
 
-                <ScrollView style={{ marginTop: 20 }}>
-                    {/* <FlatList
-                        contentContainerStyle={{}}
-                        data={dataSource}
-                        numColumns={3}
-                        renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => alert('Chat Opened')}>
-                                <TeamsFlat
-                                    item={item}
-                                /></TouchableOpacity>
-                        )}
-                        keyExtractor={item => item.id}
-
-                    /> */}
 
                     <FlatGrid
                         itemDimension={112}
@@ -175,7 +135,6 @@ export default class Teams extends Component {
                                 />
                         )}
                     />
-                </ScrollView>
             </View>
         )
     }
@@ -186,20 +145,5 @@ const styles = StyleSheet.create({
       marginTop: 10,
       flex: 1,
     },
-    itemContainer: {
-      justifyContent: 'flex-end',
-      borderRadius: 5,
-      padding: 10,
-      height: 150,
-    },
-    itemName: {
-      fontSize: 16,
-      color: '#fff',
-      fontWeight: '600',
-    },
-    itemCode: {
-      fontWeight: '600',
-      fontSize: 12,
-      color: '#fff',
-    },
+   
   });

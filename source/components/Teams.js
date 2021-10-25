@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Text, View, Image, TouchableOpacity } from 'react-native'
 import ChatIcon from 'react-native-vector-icons/Fontisto'
+import Foundation from 'react-native-vector-icons/Foundation'
 
 export default class Teams extends Component {
     render() {
@@ -14,7 +15,7 @@ export default class Teams extends Component {
 
                     <View style={{}}>
                         <View style={{}}>
-                            <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 15, color: '#000', flex: 1, alignSelf: 'center', marginTop: 5 }}> {this.props.item.name} </Text>
+                            <Text style={{ fontFamily: 'Ubuntu-Medium', fontSize: 12, color: '#000', flex: 1, alignSelf: 'center', marginTop: 5 }}> {this.props.item.name} </Text>
 
                         </View>
 
@@ -24,15 +25,19 @@ export default class Teams extends Component {
                     </View>
                 </View>
 
-                <View style={{ flexDirection: 'row', backgroundColor: '#fff', elevation: 5, justifyContent: 'space-around', marginTop: 10, padding: 5 }}>
-                    <View >
-                        <TouchableOpacity style={{}}>
-                            <ChatIcon name='hipchat' size={20} color='#000' />
+                <View style={{width:70,height:35, flexDirection: 'row', backgroundColor: '#fff', elevation: 5, justifyContent: 'space-around', marginTop: 10, padding: 8,borderRadius:5}}>
+                    <View style={{}}>
+                        <TouchableOpacity onPress={()=>alert('Edit')}>
+                            <Foundation name='page-edit' size={20} color='#000' />
                         </TouchableOpacity>
                     </View>
 
-                    <View>
-                        <TouchableOpacity>
+                    <View style={{borderRightWidth:1,borderColor:'grey'}}>
+                        <Text> </Text>
+                    </View>
+
+                    <View style={{marginLeft:4}}>
+                        <TouchableOpacity onPress={()=>alert('Chat')}>
                             <ChatIcon name='hipchat' size={20} color='#000' />
                         </TouchableOpacity>
                     </View>

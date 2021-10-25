@@ -170,10 +170,9 @@ export default class Teams extends Component {
                         // fixed
                         spacing={6}
                         renderItem={({ item }) => (
-                            <TouchableOpacity onPress={() => alert('Chat Opened')}>
                                 <TeamsFlat
                                     item={item}
-                                /></TouchableOpacity>
+                                />
                         )}
                     />
                 </ScrollView>

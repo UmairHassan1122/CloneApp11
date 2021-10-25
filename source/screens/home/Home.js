@@ -4,7 +4,6 @@ import BuildingIcon from 'react-native-vector-icons/FontAwesome'
 import BellIcon from 'react-native-vector-icons/Feather'
 import SettingIcon from 'react-native-vector-icons/AntDesign'
 import Chat from '../../components/Chat'
-import ActionButton from 'react-native-action-button';
 
 
 
@@ -186,11 +185,6 @@ export default class Home extends Component {
 
                     />
                 </ScrollView>
-
-                <ActionButton
-                    buttonColor="rgba(231,76,60,1)"
-                    onPress={() => { alert("Add") }}
-                />
             </View>
         )
     }

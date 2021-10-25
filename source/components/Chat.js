@@ -25,9 +25,6 @@ export default class Chat extends Component {
                             <Text style={{fontFamily:'Ubuntu-Medium',fontSize:12}}> {this.props.item.lastchat} </Text>
                         </View>
 
-                        <Text>
-                            Hello
-                        </Text>
                     </View>
                 </View>
 

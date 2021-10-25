@@ -1,146 +1,95 @@
-import React, { useState } from 'react';
-    import { StatusBar, StyleSheet, TouchableOpacity, View } from 'react-native';
-    import { CurvedBottomBar } from 'react-native-curved-bottom-bar';
-    import Ionicons from 'react-native-vector-icons/Ionicons';
-    import Home from '../screens/home/Home'
+import React, { Component } from 'react'
+import { Text, View, StyleSheet, Image } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/dist/Ionicons';
+import Feather from 'react-native-vector-icons/dist/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
+import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
+import Home from '../screens/home/Home'
+import Teams from './Teams';
 
-    StatusBar.setBarStyle('dark-content');
-
-    const BottomNav = props => {
-        const [type, setType] = useState<'down' | 'up'>('down');
-
-        const onClickButton = () => {
-            if (type === 'up') {
-                setType('down');
-                alert('Change type curve down');
-            } else {
-                setType('up');
-                alert('Change type curve up');
-            }
-        }
-
-        const _renderIcon = (routeName= 'home', selectTab= 'Home') => {
-            let icon = '';
-
-            switch (routeName) {
-            case 'title1':
-                icon = 'ios-home-outline';
-                break;
-            case 'title2':
-                icon = 'apps-outline';
-                break;
-            case 'title3':
-                icon = 'bar-chart-outline';
-                break;
-            case 'title4':
-                icon = 'person-outline';
-                break;
-            }
-
-            return (
-                <Ionicons name={icon} size={23} color={routeName === selectTab ? '#FF3030' : 'gray'} />
-            );
-        };
-
+const Tab = createBottomTabNavigator();
+export default class BottomNav extends Component {
+    render() {
         return (
-            <View style={styles.container}>
-                <CurvedBottomBar.Navigator
-                    style={[type === 'down' && {backgroundColor: '#F5F5F5'}]}
-                    type={type}
-                    height={60}
-                    circleWidth={55}
-                    bgColor="white"
-                    borderTopLeftRight={true}
-                    initialRouteName="title1"
-                    renderCircle={() => (
-                        <TouchableOpacity
-                            style={[type === 'down' ? styles.btnCircle : styles.btnCircleUp]} onPress={onClickButton}
-                        >
-                            <Ionicons name="chatbubbles-outline" size={23} />
-                        </TouchableOpacity>
-                    )}
-                    tabBar={({ routeName, selectTab, navigation }) => {
-                    return (
-                        <TouchableOpacity
-                            onPress={() => navigation(routeName)}
-                            style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
-                        >
-                            {_renderIcon(routeName, selectTab)}
-                        </TouchableOpacity>
-                    );
+                <Tab.Navigator
+                    screenOptions={{headerShown:false}}
+                    tabBarOptions={{
+                        showLabel: false,
+                        backBehavior: 'history',
+                        style: {
+                            position: "absolute",
+                            bottom: 2,
+                            left: 2,
+                            right: 2,
+                            elevation: 0,
+                            backgroundColor: '#009387',
+                            borderRadius: 8,
+                            height: 60,
+                            ...sty.shadow
+                        }
                     }}>
-                    <CurvedBottomBar.Screen
-                        name="title1"
-                        position="left"
-                        component={() => <Home style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
-                    />
-                    <CurvedBottomBar.Screen
-                        name="title2"
-                        component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
-                        position="left"
-                    />
-                    <CurvedBottomBar.Screen
-                        name="title3"
-                        component={() => <View style={{ backgroundColor: '#BFEFFF', flex: 1 }} />}
-                        position="right"
-                    />
-                    <CurvedBottomBar.Screen
-                        name="title4"
-                        component={() => <View style={{ backgroundColor: '#FFEBCD', flex: 1 }} />}
-                        position="right"
-                    />
-                </CurvedBottomBar.Navigator>
-            </View>
-        );
-    };
-
-    export default BottomNav;
-
-    const styles = StyleSheet.create({
-        container: {
-            flex: 1,
-        },
-        btnCircle: {
-            width: 60,
-            height: 60,
-            borderRadius: 30,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: 'white',
-            shadowColor: "#000",
-            shadowOffset: {
+                    <Tab.Screen name="Chat" component={Home} options={{
+                        title: "Home Screen",
+                        tabBarBadge: 2,
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
+                                <Icon name="ios-chatbox-ellipses-outline" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Chat</Text>
+                            </View>
+                        )
+                    }} />
+                    <Tab.Screen name="Chat1" component={Teams} options={{
+                        title: "Home Screen",
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
+                                <Feather name="users" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Team</Text>
+                            </View>
+                        )
+                    }} />
+                    <Tab.Screen name="Chat2" component={Home} options={{
+                        title: "Home Screen",
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
+                                <Feather name="user" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>MyPage</Text>
+                            </View>
+                        )
+                    }} />
+                    <Tab.Screen name="Chat3" component={Home} options={{
+                        title: "Home Screen",
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
+                                <MaterialCommunityIcons name="bag-checked" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Projects</Text>
+                            </View>
+                        )
+                    }} />
+                    <Tab.Screen name="Chat4" component={Home} options={{
+                        title: "Home Screen",
+                        tabBarIcon: ({ focused }) => (
+                            <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
+                                <FontAwesome name="handshake-o" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Clients</Text>
+                            </View>
+                        )
+                    }} />
+                </Tab.Navigator>
+        )
+    }
+}
+const sty = StyleSheet.create({
+    shadow: {
+        shadowColor: '#7F5DF0',
+        shadowOffset: {
             width: 0,
-            height: 1,
-            },
-            shadowOpacity: 0.20,
-            shadowRadius: 1.41,
-            elevation: 1,
-            bottom: 28
+            height: 10
         },
-        btnCircleUp: {
-            width: 60,
-            height: 60,
-            borderRadius: 30,
-            alignItems: 'center',
-            justifyContent: 'center',
-            backgroundColor: '#E8E8E8',
-            bottom: 18,
-            shadowColor: "#000",
-            shadowOffset: {
-            width: 0,
-            height: 1,
-            },
-            shadowOpacity: 0.20,
-            shadowRadius: 1.41,
-            elevation: 1,
-        },
-        imgCircle: {
-            width: 30,
-            height: 30,
-            tintColor: '#48CEF6'
-        },
-        img: {
-            width: 30,
-            height: 30,
-        }
-    });
+        shadowOpacity: 0.25,
+        shadowRadius: 3.5,
+        elevation: 5
+    }
+});

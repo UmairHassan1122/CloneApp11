@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
-import { Text, View, FlatList, TextInput, TouchableOpacity, ScrollView, Image } from 'react-native'
+import { Text, View, TouchableOpacity, TextInput, FlatList, ScrollView, Image,StyleSheet } from 'react-native'
+import SettingIcon from 'react-native-vector-icons/AntDesign'
 import BuildingIcon from 'react-native-vector-icons/FontAwesome'
 import BellIcon from 'react-native-vector-icons/Feather'
-import SettingIcon from 'react-native-vector-icons/AntDesign'
-import Chat from '../../components/Chat'
-import ActionButton from 'react-native-action-button';
+import TeamsFlat from '../../components/Teams'
+import { FlatGrid } from 'react-native-super-grid';
 
-
-
-export default class Home extends Component {
+export default class Teams extends Component {
 
     state = {
         dataSource: [],
@@ -18,85 +16,65 @@ export default class Home extends Component {
     componentDidMount() {
         const data = [
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Umair Hassan',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
+                name: 'Umair',
                 date: '07/03/2001',
                 phone: '03431171815',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Umair Hassan.'
 
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Farhan Ali',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
+                name: 'Farhan',
                 date: '06/07/2004',
                 phone: '+923063884033',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Farhan Ali.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
                 name: 'Khawar',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Khawar.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Abdur Rahman',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72, borderRadius:5}} />,
+                name: 'Abdur ',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Rahman.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Irfan Ali',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
+                name: 'Irfan',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Irfan.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Adeel Arif',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
+                name: 'Adeel ',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Adeel.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
                 name: 'Kashif',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Kashif.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Shahjahan XD',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72, borderRadius:5}} />,
+                name: 'Shahja',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Shah.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Romero Riaz',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72, borderRadius:5}} />,
+                name: 'Romero ',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Romero.'
             },
             {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Faizan Rasool',
+                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 72, width: 72,borderRadius:5 }} />,
+                name: 'Faizan',
                 date: '17/11/1994',
                 phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Faizan.'
             }
         ]; this.setState({
             dataBackup: data,
@@ -130,11 +108,9 @@ export default class Home extends Component {
     };
 
     render() {
-
         const { dataBackup, dataSource } = this.state
         return (
             <View style={{ flex: 1, backgroundColor: '#F4F6FA' }}>
-
                 <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 10, marginTop: 20 }}>
                     <View style={{ marginRight: 5 }}>
                         <TouchableOpacity>
@@ -155,9 +131,8 @@ export default class Home extends Component {
                     </View>
                 </View>
 
-
                 <View style={{ marginTop: 20, marginLeft: 10 }}>
-                    <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 25, color: '#000' }}>Conversations</Text>
+                    <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 25, color: '#000' }}>Teams</Text>
                 </View>
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginRight: 10 }}>
@@ -173,25 +148,59 @@ export default class Home extends Component {
                 </View>
 
                 <ScrollView style={{ marginTop: 20 }}>
-                    <FlatList
+                    {/* <FlatList
                         contentContainerStyle={{}}
                         data={dataSource}
+                        numColumns={3}
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => alert('Chat Opened')}>
-                                <Chat
+                                <TeamsFlat
                                     item={item}
                                 /></TouchableOpacity>
                         )}
                         keyExtractor={item => item.id}
 
+                    /> */}
+
+                    <FlatGrid
+                        itemDimension={112}
+                        data={dataSource}
+                        style={styles.gridView}
+                        // staticDimension={300}
+                        // fixed
+                        spacing={6}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity onPress={() => alert('Chat Opened')}>
+                                <TeamsFlat
+                                    item={item}
+                                /></TouchableOpacity>
+                        )}
                     />
                 </ScrollView>
-
-                <ActionButton
-                    buttonColor="rgba(231,76,60,1)"
-                    onPress={() => { alert("Add") }}
-                />
             </View>
         )
     }
 }
+
+const styles = StyleSheet.create({
+    gridView: {
+      marginTop: 10,
+      flex: 1,
+    },
+    itemContainer: {
+      justifyContent: 'flex-end',
+      borderRadius: 5,
+      padding: 10,
+      height: 150,
+    },
+    itemName: {
+      fontSize: 16,
+      color: '#fff',
+      fontWeight: '600',
+    },
+    itemCode: {
+      fontWeight: '600',
+      fontSize: 12,
+      color: '#fff',
+    },
+  });

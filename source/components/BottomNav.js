@@ -3,6 +3,7 @@ import { Text, View, StyleSheet, Image } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import Icon from 'react-native-vector-icons/dist/Ionicons';
 import Feather from 'react-native-vector-icons/dist/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/dist/MaterialCommunityIcons';
@@ -10,34 +11,26 @@ import FontAwesome from 'react-native-vector-icons/dist/FontAwesome';
 import Home from '../screens/home/Home'
 import Teams from './Teams';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 export default class BottomNav extends Component {
     render() {
         return (
                 <Tab.Navigator
                     screenOptions={{headerShown:false}}
-                    tabBarOptions={{
-                        showLabel: false,
-                        backBehavior: 'history',
-                        style: {
-                            position: "absolute",
-                            bottom: 2,
-                            left: 2,
-                            right: 2,
-                            elevation: 0,
-                            backgroundColor: '#009387',
-                            borderRadius: 8,
-                            height: 60,
-                            ...sty.shadow
-                        }
-                    }}>
+                    initialRouteName="Home"
+                    activeColor="#f0edf6"
+                    inactiveColor="#fff"
+                    barStyle={{
+                        backgroundColor:'#fff'
+                    }}
+                    >
                     <Tab.Screen name="Chat" component={Home} options={{
                         title: "Home Screen",
                         tabBarBadge: 2,
                         tabBarIcon: ({ focused }) => (
                             <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
-                                <Icon name="ios-chatbox-ellipses-outline" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
-                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Chat</Text>
+                                <Icon name="ios-chatbox-ellipses-outline" size={25} style={{ color: focused ? '#E32F45' : '#000' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#000', fontSize: 12 }}></Text>
                             </View>
                         )
                     }} />
@@ -45,8 +38,8 @@ export default class BottomNav extends Component {
                         title: "Home Screen",
                         tabBarIcon: ({ focused }) => (
                             <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
-                                <Feather name="users" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
-                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Team</Text>
+                                <Feather name="users" size={25} style={{ color: focused ? '#E32F45' : '#000' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#000', fontSize: 12 }}></Text>
                             </View>
                         )
                     }} />
@@ -54,8 +47,8 @@ export default class BottomNav extends Component {
                         title: "Home Screen",
                         tabBarIcon: ({ focused }) => (
                             <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
-                                <Feather name="user" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
-                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>MyPage</Text>
+                                <Feather name="user" size={25} style={{ color: focused ? '#E32F45' : '#000' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#000', fontSize: 12 }}></Text>
                             </View>
                         )
                     }} />
@@ -63,8 +56,8 @@ export default class BottomNav extends Component {
                         title: "Home Screen",
                         tabBarIcon: ({ focused }) => (
                             <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
-                                <MaterialCommunityIcons name="bag-checked" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
-                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Projects</Text>
+                                <MaterialCommunityIcons name="bag-checked" size={25} style={{ color: focused ? '#E32F45' : '#000' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#000', fontSize: 12 }}></Text>
                             </View>
                         )
                     }} />
@@ -72,8 +65,8 @@ export default class BottomNav extends Component {
                         title: "Home Screen",
                         tabBarIcon: ({ focused }) => (
                             <View style={{ alignItems: "center", justifyContent: "center", top: 5 }}>
-                                <FontAwesome name="handshake-o" size={25} style={{ color: focused ? '#E32F45' : '#FFFFFF' }} />
-                                <Text style={{ color: focused ? '#E32F45' : '#FFFFFF', fontSize: 12 }}>Clients</Text>
+                                <FontAwesome name="handshake-o" size={25} style={{ color: focused ? '#E32F45' : '#000' }} />
+                                <Text style={{ color: focused ? '#E32F45' : '#000', fontSize: 12 }}></Text>
                             </View>
                         )
                     }} />
@@ -83,7 +76,7 @@ export default class BottomNav extends Component {
 }
 const sty = StyleSheet.create({
     shadow: {
-        shadowColor: '#7F5DF0',
+        shadowColor: '#fff',
         shadowOffset: {
             width: 0,
             height: 10

@@ -11,7 +11,7 @@ const Tab = createMaterialBottomTabNavigator();
 import Home from '../screens/home/Home'
 import Teams from '../screens/home/Teams'
 import Clients from '../screens/home/Clients';
-import Projects from './Projects';
+import Projects from '../screens/home/Projects';
 export default class BottomNav extends Component {
     render() {
         return (

@@ -11,7 +11,7 @@ const Tab = createMaterialBottomTabNavigator();
 import Home from '../screens/home/Home'
 import Teams from '../screens/home/Teams'
 import Clients from '../screens/home/Clients';
-import Projects from './Projects';
+import Projects from '../screens/home/Projects';
 export default class BottomNav extends Component {
     render() {
         return (
@@ -43,7 +43,7 @@ export default class BottomNav extends Component {
 
                             }
 
-                            // You can return any component that you like here!
+
                         },
                     })}  >
                     <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: 'Chat', }} />

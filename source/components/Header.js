@@ -5,6 +5,7 @@ import BellIcon from 'react-native-vector-icons/Feather'
 import SettingIcon from 'react-native-vector-icons/AntDesign'
 
 export default class Header extends Component {
+    
     render() {
         return (
             <View style={{}}>

@@ -11,6 +11,7 @@ const Tab = createMaterialBottomTabNavigator();
 import Home from '../screens/home/Home'
 import Teams from '../screens/home/Teams'
 import Clients from '../screens/home/Clients';
+import Projects from './Projects';
 export default class BottomNav extends Component {
     render() {
         return (
@@ -32,11 +33,11 @@ export default class BottomNav extends Component {
                                 iconName = focused ? 'user' : 'user';
                                 return <Icon2 name={iconName} size={20} color={color} />;
 
-                            } else if (route.name === 'AccountScreen') {
+                            } else if (route.name === 'Projects') {
                                 iconName = focused ? 'briefcase' : 'briefcase';
                                 return <Icon3 name={iconName} size={20} color={color} />;
 
-                            } else if (route.name === 'ProfileScreen') {
+                            } else if (route.name === 'Clients') {
                                 iconName = focused ? 'handshake-o' : 'handshake-o';
                                 return <Icon4 name={iconName} size={20} color={color} />;
 
@@ -48,8 +49,8 @@ export default class BottomNav extends Component {
                     <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: 'Chat', }} />
                     <Tab.Screen name="LoanScreen" component={Teams} options={{ tabBarLabel: 'Team', }} />
                     <Tab.Screen name="SavingsScreen" component={Home} options={{ tabBarLabel: 'My Page', }} />
-                    <Tab.Screen name="AccountScreen" component={Home} options={{ tabBarLabel: 'Projects', }} />
-                    <Tab.Screen name="ProfileScreen" component={Clients} options={{ tabBarLabel: 'Clients', }} />
+                    <Tab.Screen name="Projects" component={Projects} options={{ tabBarLabel: 'Projects', }} />
+                    <Tab.Screen name="Clients" component={Clients} options={{ tabBarLabel: 'Clients', }} />
                 </Tab.Navigator>
             </NavigationContainer>
         )

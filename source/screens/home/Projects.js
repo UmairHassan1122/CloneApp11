@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, ScrollView, TextInput, FlatList } from 'react-native'
-import { Button } from 'react-native-elements/dist/buttons/Button'
-import { color } from 'react-native-elements/dist/helpers'
+import { Text, View, ScrollView, TextInput, FlatList, Button } from 'react-native'
 import Header from '../../components/Header'
 import Project from '../../components/Projects'
 const data = [{ Name: "Ali", start_date: "Oct 22,2021", deadline: "Dec 22,2021", status: "Pending", By: "admin admin", Client: "Accord", Tasks: 0, Issues: 0, Members: 6 }, { Name: "Raza", start_date: "Oct 22,2021", deadline: "Dec 22,2021", status: "Pending", By: "admin admin", Client: "Ahad", Tasks: 0, Issues: 0, Members: 6 }, { Name: "Abdul", start_date: "Oct 22,2021", deadline: "Dec 22,2021", status: "Pending", By: "admin admin", Client: "Ahad", Tasks: 0, Issues: 0, Members: 6 }]

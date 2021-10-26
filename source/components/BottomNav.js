@@ -43,7 +43,7 @@ export default class BottomNav extends Component {
 
                             }
 
-                            // You can return any component that you like here!
+
                         },
                     })}  >
                     <Tab.Screen name="Home" component={Home} options={{ tabBarLabel: 'Chat', }} />

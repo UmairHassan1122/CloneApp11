@@ -25,7 +25,7 @@ export default class Projects extends Component {
 
         return (
             <View style={{ flex: 1, backgroundColor: '#F4F6FA' }}>
-                <Header title="PROJECT LIST" />
+                <Header data="PROJECT LIST" />
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginRight: 10 }}>
                     <View style={{ marginLeft: 10, backgroundColor: '#fff', elevation: 3, flex: 1, borderRadius: 5 }}>
                         <TextInput style={{ marginLeft: 10 }} placeholder='Search' onChangeText={(value) => this.filterItem(value)}></TextInput>

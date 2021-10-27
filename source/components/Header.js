@@ -6,33 +6,39 @@ import SettingIcon from 'react-native-vector-icons/AntDesign'
 
 export default class Header extends Component {
 
+    
+
     render() {
         return (
-            <View style={{}}>
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', marginRight: 10, marginTop: 20 }}>
+            <View style={{ flexDirection: 'row',marginBottom:20 }}>
+
+                <View style={{ marginTop: 20, marginLeft: 10 }}>
+                    <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 25, color: '#000' }}>{this.props.title}</Text>
+                </View>
+                <View style={{ flexDirection: 'row',flex:1, alignItems: 'center', justifyContent: 'flex-end', marginRight: 10, marginTop: 20 }}>
                     <View style={{ marginRight: 5 }}>
                         <TouchableOpacity>
                             <BuildingIcon name='building' size={30} color='#000' />
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{ marginRight: 5 }}>
-                        <TouchableOpacity>
+                    <View style={{ marginRight: 5 }} >
+                        <TouchableOpacity onPress={this.props.navig}>
                             <BellIcon name='bell' size={30} color='#000' />
                         </TouchableOpacity>
                     </View>
 
                     <View>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={this.props.navi}>
                             <SettingIcon name='setting' size={30} color='#000' />
                         </TouchableOpacity>
                     </View>
+
+
                 </View>
 
 
-                <View style={{ marginTop: 20, marginLeft: 10 }}>
-                    <Text style={{ fontFamily: 'Ubuntu-Bold', fontSize: 25, color: '#000' }}>{this.props.title}</Text>
-                </View>
+
 
 
             </View>

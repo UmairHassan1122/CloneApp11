@@ -17,15 +17,9 @@ import Tasks from './Tasks';
 import BellScreen from '../screens/home/BellScreen'
 import Settings from '../screens/home/Settings'
 import ChangePassword from '../screens/auth/ChangePassword';
-<<<<<<< HEAD
-import TeamTaskCreate from '../screens/home/TeamTaskCreate';
-import ProjectsDetails from '../screens/home/ProjectsDetails';
-import ProjectNotesCreate from '../screens/home/ProjectNotesCreate';
-=======
 
 import SignupScreen from '../screens/home/SignupScreen';
 import ChatScreen from '../components/ChatScreen'
->>>>>>> 0f349aa2ce81f8e2d0f6c3c9dfbef8c0f48ed99f
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();

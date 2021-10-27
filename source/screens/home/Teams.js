@@ -131,6 +131,7 @@ export default class Teams extends Component {
                         spacing={6}
                         renderItem={({ item }) => (
                                 <TeamsFlat
+                                navi={()=>this.props.navigation.navigate('TeamTaskCreate')}
                                     item={item}
                                 />
                         )}

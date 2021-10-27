@@ -3,6 +3,7 @@ import { Text, View, ScrollView, TextInput, FlatList, Button, Image, TouchableOp
 import Header from '../../components/Header'
 import Project from '../../components/Projects'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 
 
 export default class Projects extends Component {
@@ -93,7 +94,7 @@ export default class Projects extends Component {
         const { dataSource } = this.state
         return (
             <View style={{ flex: 1, backgroundColor: '#F4F6FA' }}>
-                <Header title="Project List" navi={()=>this.props.navigation.navigate('Settings')}  navig={()=>this.props.navigation.navigate('BellScreen')}/>
+                <Header title="Project List" navi={() => this.props.navigation.navigate('Settings')} navig={() => this.props.navigation.navigate('BellScreen')} />
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginRight: 10 }}>
                     <View style={{ marginLeft: 10, backgroundColor: '#fff', elevation: 3, flex: 1, borderRadius: 5 }}>
@@ -101,25 +102,25 @@ export default class Projects extends Component {
                     </View>
 
                     <View style={{ flexDirection: "row", marginLeft: 10, justifyContent: "flex-end", marginRight: 0, alignItems: 'center' }}>
-               
-                            <View>
-                                <TouchableOpacity style={{ borderWidth: 1, borderColor: "blue", padding: 5, backgroundColor: this.state.visible1 ? "blue" : "white" }} onPress={() => { this.onClick() }}>
-                                    <Text style={{ color: this.state.visible1 ? "white" : "black", fontSize: 11 }}>ASSIGNED</Text>
-                                </TouchableOpacity>
-                            </View>
 
-                            <View >
-                                <TouchableOpacity style={{ borderWidth: 1, borderColor: "blue", padding: 5, backgroundColor: this.state.visible2 ? "blue" : "white" }} onPress={() => { this.onClick1() }}>
-                                    <Text style={{ color: this.state.visible2 ? "white" : "black", fontSize: 11 }}>Created</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-
-                        <View style={{ marginTop: 10 }}>
-                            <TouchableOpacity style={{ marginLeft: 5, backgroundColor: "grey", padding: 10, borderRadius: 10, elevation: 5, marginBottom: 10 }} onPress={() => { alert("sort") }}>
-                                <FontAwesome5 name='bars' size={13} color='#000' />
+                        <View>
+                            <TouchableOpacity style={{ borderWidth: 1, borderColor: "blue", padding: 5, backgroundColor: this.state.visible1 ? "blue" : "white" }} onPress={() => { this.onClick() }}>
+                                <Text style={{ color: this.state.visible1 ? "white" : "black", fontSize: 11 }}>Active</Text>
                             </TouchableOpacity>
                         </View>
+
+                        <View >
+                            <TouchableOpacity style={{ borderWidth: 1, borderColor: "blue", padding: 5, backgroundColor: this.state.visible2 ? "blue" : "white" }} onPress={() => { this.onClick1() }}>
+                                <Text style={{ color: this.state.visible2 ? "white" : "black", fontSize: 11 }}>Archive</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+
+                    <View style={{ marginTop: 10 }}>
+                        <TouchableOpacity style={{ marginLeft: 5, backgroundColor: "grey", padding: 10, borderRadius: 10, elevation: 5, marginBottom: 10 }} onPress={() => { alert("sort") }}>
+                            <FontAwesome5 name='bars' size={13} color='#000' />
+                        </TouchableOpacity>
+                    </View>
 
                 </View>
 
@@ -127,7 +128,13 @@ export default class Projects extends Component {
                     style={{ marginTop: 20 }}
                     data={dataSource}
                     renderItem={({ item }) => (
-                        <Project item={item} />
+                        <TouchableOpacity onPress={()=>this.props.navigation.navigate('ProjectsDetails',
+                         {
+                           
+                            otherParam:item
+                          })} >
+                            <Project item={item} />
+                        </TouchableOpacity>
                     )}
                     keyExtractor={item => item.Name}
 

@@ -27,7 +27,7 @@ export default class Teams extends Component {
 
                 <View style={{width:70,height:35, flexDirection: 'row', backgroundColor: '#fff', elevation: 5, justifyContent: 'space-around', marginTop: 10, padding: 8,borderRadius:5}}>
                     <View style={{}}>
-                        <TouchableOpacity onPress={()=>alert('Edit')}>
+                        <TouchableOpacity onPress={this.props.navi}>
                             <Foundation name='page-edit' size={20} color='#000' />
                         </TouchableOpacity>
                     </View>
@@ -37,7 +37,7 @@ export default class Teams extends Component {
                     </View>
 
                     <View style={{marginLeft:4}}>
-                        <TouchableOpacity onPress={()=>alert('Chat')}>
+                        <TouchableOpacity onPress={this.props.navi}>
                             <ChatIcon name='hipchat' size={20} color='#000' />
                         </TouchableOpacity>
                     </View>

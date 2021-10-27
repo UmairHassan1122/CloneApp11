@@ -5,111 +5,33 @@ import BellIcon from 'react-native-vector-icons/Feather'
 import SettingIcon from 'react-native-vector-icons/AntDesign'
 import Chat from '../../components/Chat'
 import Header from '../../components/Header'
+import firestore from '@react-native-firebase/firestore'
 export default class Home extends Component {
 
     state = {
         dataSource: [],
-        dataBackup: []
+        dataBackup: [], users: []
     }
+    getUsers = async () => {
 
+        const querySanp = await firestore().collection('users').where('MSG', '!=', false).get()
+        const allusers = querySanp.docs.map(docSnap => docSnap.data())
+        this.setState({ users: allusers, dataSource: allusers, dataBackup: allusers });
+    }
     componentDidMount() {
-        const data = [
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Umair Hassan',
-                date: '07/03/2001',
-                phone: '03431171815',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Umair Hassan.'
 
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Farhan Ali',
-                date: '06/07/2004',
-                phone: '+923063884033',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Farhan Ali.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Khawar',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Khawar.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Abdur Rahman',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Rahman.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Irfan Ali',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Irfan.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Adeel Arif',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Adeel.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Kashif',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Kashif.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Shahjahan XD',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Shah.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Romero Riaz',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Romero.'
-            },
-            {
-                img: <Image source={require('../../../assets/images/1.png')} style={{ height: 60, width: 60, borderRadius: 35, }} />,
-                name: 'Faizan Rasool',
-                date: '17/11/1994',
-                phone: '+923485126286',
-                lastonline: '2:30pm',
-                lastchat: 'Hello I am Faizan.'
-            }
-        ]; this.setState({
-            dataBackup: data,
-            dataSource: data
-        })
+        this.getUsers();
+
+
 
     }
 
     filterItem = (value) => {
-        // this.setState({
-        //     query:query,
-        // });
+
 
         if (value == " ") {
             this.setState({
-                dataSource: this.state.dataBackup,
+                dataSource: dataBackup
             })
         }
         else {
@@ -128,11 +50,11 @@ export default class Home extends Component {
 
     render() {
 
-        const { dataBackup, dataSource } = this.state
+
         return (
             <View style={{ flex: 1, backgroundColor: '#F4F6FA' }}>
 
-                <Header title='Conversations' navi={()=>this.props.navigation.navigate('Settings')}  navig={()=>this.props.navigation.navigate('BellScreen')}/>
+                <Header title='Conversations' navi={() => this.props.navigation.navigate('Settings')} navig={() => this.props.navigation.navigate('BellScreen')} />
 
                 <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: 10, marginRight: 10 }}>
                     <View style={{ marginLeft: 10, backgroundColor: '#fff', elevation: 3, flex: 1, borderRadius: 5 }}>
@@ -142,12 +64,11 @@ export default class Home extends Component {
 
                 <FlatList
                     style={{ marginTop: 10 }}
-                    data={dataSource}
+                    data={this.state.dataSource}
                     renderItem={({ item }) => (
-                        <TouchableOpacity onPress={() => alert('Chat Opened')}>
-                            <Chat
-                                item={item}
-                            /></TouchableOpacity>
+
+                        <Chat item={item} navi={this.props.navigation} />
+
                     )}
                     keyExtractor={item => item.id}
 

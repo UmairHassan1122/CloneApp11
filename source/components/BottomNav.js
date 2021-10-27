@@ -17,7 +17,8 @@ import BellScreen from '../screens/home/BellScreen'
 import Settings from '../screens/home/Settings'
 import ChangePassword from '../screens/auth/ChangePassword';
 
-
+import SignupScreen from '../screens/home/SignupScreen';
+import ChatScreen from '../components/ChatScreen'
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -59,12 +60,13 @@ export default class BottomNav extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator screenOptions={{headerShown:false}}>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Home" component={this.MyTabs} />
                     <Stack.Screen name="Task" component={Tasks} />
                     <Stack.Screen name="BellScreen" component={BellScreen} />
                     <Stack.Screen name="Settings" component={Settings} />
                     <Stack.Screen name="ChangePassword" component={ChangePassword} />
+                    <Stack.Screen name="ChatScreen" component={ChatScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         )

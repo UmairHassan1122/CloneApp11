@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "466605230049",
+    "project_id": "mycybase-cc355",
+    "storage_bucket": "mycybase-cc355.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:466605230049:android:81751cfb5fe992c70a34a0",
+        "android_client_info": {
+          "package_name": "com.cloneapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "466605230049-no564ag8ua235vn8e3ou19ukn9s4dn59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAotRFUM0TOXc8IufJwqDA2Uc-ImjHBFbM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "466605230049-no564ag8ua235vn8e3ou19ukn9s4dn59.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

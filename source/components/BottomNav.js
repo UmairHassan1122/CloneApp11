@@ -17,9 +17,15 @@ import Tasks from './Tasks';
 import BellScreen from '../screens/home/BellScreen'
 import Settings from '../screens/home/Settings'
 import ChangePassword from '../screens/auth/ChangePassword';
+<<<<<<< HEAD
 import TeamTaskCreate from '../screens/home/TeamTaskCreate';
 import ProjectsDetails from '../screens/home/ProjectsDetails';
 import ProjectNotesCreate from '../screens/home/ProjectNotesCreate';
+=======
+
+import SignupScreen from '../screens/home/SignupScreen';
+import ChatScreen from '../components/ChatScreen'
+>>>>>>> 0f349aa2ce81f8e2d0f6c3c9dfbef8c0f48ed99f
 
 const Stack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
@@ -61,17 +67,13 @@ export default class BottomNav extends Component {
     render() {
         return (
             <NavigationContainer>
-                <Stack.Navigator screenOptions={{headerShown:false}}>
+                <Stack.Navigator screenOptions={{ headerShown: false }}>
                     <Stack.Screen name="Home" component={this.MyTabs} />
                     <Stack.Screen name="Task" component={Tasks} />
                     <Stack.Screen name="BellScreen" component={BellScreen} />
                     <Stack.Screen name="Settings" component={Settings} />
                     <Stack.Screen name="ChangePassword" component={ChangePassword} />
-                    <Stack.Screen name="TeamTaskCreate" component={TeamTaskCreate} />
-                    <Stack.Screen name="Teams" component={Teams} />
-                    <Stack.Screen name="Teams1" component={Teams1} />
-                    <Stack.Screen name="ProjectsDetails" component={ProjectsDetails} />
-                    <Stack.Screen name="ProjectNotesCreate" component={ProjectNotesCreate} />
+                    <Stack.Screen name="ChatScreen" component={ChatScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         )
